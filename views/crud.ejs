@@ -134,7 +134,11 @@
                             <!-- 6. Arreglo de roles -->
                             <select name="idrole" class="form-control">
                                 <option value="null" selected disabled class="form-control">Select an item</option>
-
+                                <% rolesArray.forEach( role => { %> 
+                                    <option 
+                                    value="<%=role.idrole%>"
+                                    class="form-control"><%=role.name%></option>
+                                <% }) %> 
                             </select>
                         </div>
 
