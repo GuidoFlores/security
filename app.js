@@ -7,6 +7,12 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+/* 1. Carga de variables de entorno */
+require('dotenv').config()
+
+var createError = require('http-errors');
+var express = require('express');
+
 var app = express();
 
 // view engine setup
