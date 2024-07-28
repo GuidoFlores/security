@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const mysql = require('mysql2');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -15,9 +16,12 @@ var express = require('express');
 
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
