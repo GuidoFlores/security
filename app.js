@@ -1,6 +1,5 @@
 var createError = require('http-errors');
 var express = require('express');
-const mysql = require('mysql2');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,8 +7,9 @@ var logger = require('morgan');
 /* 1. Módulo express-session */
 const session = require('express-session');
  /* 1. Referencia a los middlewares */
- var authenticateSession = require('./middleware/authentication_session');
- var authorizationSession = require('./middleware/authorization_session');
+ 
+ /*var authenticateSession = require('./middleware/authentication_session');
+ var authorizationSession = require('./middleware/authorization_session');*/
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -46,8 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
  /* 2. Agregue el middleware al router */
- app.use('/users', authenticateSession, authorizationSession, usersRouter);
+ app.use('/users', usersRouter);
 
+ 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

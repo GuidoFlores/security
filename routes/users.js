@@ -26,11 +26,9 @@ var express = require('express');
    
    let rolesCollection = await models.roles.findAll({ })
 
-      
-
 
    /* 4. Paso de parámetros a la vista */
-   res.render('crud', { username: req.cookies['username'], title: 'CRUD with users', usersArray: usersCollection, rolesArray: rolesCollection });
+   res.render('crud', { title: 'CRUD with users', usersArray: usersCollection, rolesArray: rolesCollection });
 
  });
 
