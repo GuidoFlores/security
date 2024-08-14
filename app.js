@@ -10,9 +10,11 @@ const session = require('express-session');
  
  var authenticateSession = require('./middleware/authentication_session');
  var authorizationSession = require('./middleware/authorization_session');
+ var authorizationUserSession = require('./middleware/authorization_user_session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var tokenRouter = require('./routes/token');
 
 /* 1. Carga de variables de entorno */
 require('dotenv').config()
@@ -47,6 +49,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
  /* 2. Agregue el middleware al router */
  app.use('/users', authenticateSession, authorizationSession, usersRouter);
+ //app.use('/users', usersRouter);
+ app.use('/token', authenticateSession, authorizationUserSession, tokenRouter);
+ //app.use('/token', tokenRouter);
 
  
 // catch 404 and forward to error handler
